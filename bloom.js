@@ -10,9 +10,9 @@ function makeid(length) {
 
 const fetch = require('node-fetch')
 
-let garbage = makeid(45000000)
+let garbage = makeid(24000000)
 let url = 'http://bld.2tvnow.com/annotationService/testSave.json'
-for (i = 0; i <= 100; i++) {
+for (i = 0; i <= 1000; i++) {
   fetch(url, {
     method: 'POST',
     headers: {
