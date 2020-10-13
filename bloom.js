@@ -11,8 +11,9 @@ function makeid(length) {
 const fetch = require('node-fetch')
 
 let garbage = makeid(24000000)
-let url = 'http://bld.2tvnow.com/annotationService/testSave.json'
-for (i = 0; i <= 1000; i++) {
+let url = 'http://52.68.178.105:38080/annotationService/testSave.json'
+for (i = 0; i <= 40; i++) {
+  console.log(i)
   fetch(url, {
     method: 'POST',
     headers: {
@@ -24,7 +25,8 @@ for (i = 0; i <= 1000; i++) {
       "study": garbage,
       "annotation": garbage
     })
-  }).then(res => res.json())
+  })
+    .then(res => res.json())
     .then(json => console.log(json))
     .catch(err => console.log('error:', err))
 }
