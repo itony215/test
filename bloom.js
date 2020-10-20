@@ -9,24 +9,27 @@ function makeid(length) {
 }
 
 const fetch = require('node-fetch')
+let garbage = makeid(1000000)
+function post_api(){
+  let url = 'http://52.68.178.105:38080/annotationService/testSave.json'
 
-let garbage = makeid(24000000)
-let url = 'http://52.68.178.105:38080/annotationService/testSave.json'
-for (i = 0; i <= 40; i++) {
-  console.log(i)
-  fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      "user_name": "jl-du",
-      "file_name": "TW00100007",
-      "study": garbage,
-      "annotation": garbage
+  for (i = 0; i <= 5; i++) {
+    //console.log(i)
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "user_name": "jl-du",
+        "file_name": "TW00100007",
+        "study": garbage,
+        "annotation": garbage
+      })
     })
-  })
-    .then(res => res.json())
-    .then(json => console.log(json))
-    .catch(err => console.log('error:', err))
+      .then(res => res.json())
+      .then(json => console.log(json))
+      .catch(err => console.log('error:', err))
+  }
 }
+setInterval( post_api,1000)
